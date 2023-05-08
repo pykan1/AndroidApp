@@ -1,5 +1,6 @@
 package com.example.myapplication.presantation.screens.AuthReg
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -28,7 +29,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.myapplication.data.api.model.AuthRegClass
+import com.example.myapplication.presantation.navigation.Screens
 import com.example.myapplication.presantation.navigation.SetupNavHostScreen
+import com.example.myapplication.presantation.screens.editor.AddViewModel
 import com.example.myapplication.presantation.ui.theme.*
 import javax.inject.Inject
 
@@ -38,6 +41,7 @@ fun AuthRegScreen(navController: NavHostController, viewModel: AuthRegViewModel)
     val keyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
     val stateAuth by viewModel.auth.collectAsState()
+
     Box(
         modifier = Modifier
             .fillMaxSize()

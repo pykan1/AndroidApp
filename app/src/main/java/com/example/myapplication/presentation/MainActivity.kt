@@ -23,35 +23,14 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    @Inject
-    lateinit var getAllUserUseCase: GetAllUserUseCase
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Log.d("11", "enter")
             val viewModel = hiltViewModel<AuthRegViewModel>()
             val navController = rememberNavController()
-//            Log.d("11", user.toString())
-            var hasUser by remember {
-                mutableStateOf(runBlocking {
-                    getAllUserUseCase.invoke()
-                }.isNotEmpty())
-            }
-            Log.d("11", hasUser.toString())
-            Log.d("11", viewModel.isFinish.toString())
-            if (viewModel.isFinish || !viewModel.isFinish) {
-                hasUser = runBlocking {
-                    getAllUserUseCase.invoke()
-                }.isNotEmpty()
-            }
-            if (!viewModel.isFinish && !hasUser) {
-                AuthRegScreen(navController = navController, viewModel)
-            } else {
-                SetupNavHostScreen(navController = navController, viewModel)//fdsf
-                viewModel.isFinish = true
-            }
+            SetupNavHostScreen(navController = navController, viewModel)//fdsf
             window.insetsController?.apply {
                 hide(WindowInsets.Type.navigationBars())
                 systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE

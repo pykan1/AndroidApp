@@ -13,14 +13,12 @@ import com.example.myapplication.domain.model.CardModel
 import com.example.myapplication.domain.usecases.card.AddCardUseCase
 import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
 import com.example.myapplication.domain.usecases.user.InsertUserUseCase
+import com.example.myapplication.presantation.navigation.Screens
 
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -91,6 +89,13 @@ class AuthRegViewModel @Inject constructor(
                     addCardUseCase.invoke(it) //долго прилетает, надо решать вопросики
                 }
                 isFinish = true
+                withContext(Dispatchers.Main) {
+                    navController.navigate(Screens.MainScreen.rout) {
+                        popUpTo(Screens.MainScreen.rout) {
+                            inclusive = true
+                        }
+                    }
+                }
                 setAuthRegClass()
             } catch (e: Exception) {
                 errorMessageText(e.message.toString())
@@ -109,6 +114,13 @@ class AuthRegViewModel @Inject constructor(
                     addCardUseCase.invoke(it)
                 }
                 isFinish = true
+                withContext(Dispatchers.Main) {
+                    navController.navigate(Screens.MainScreen.rout) {
+                        popUpTo(Screens.MainScreen.rout) {
+                            inclusive = true
+                        }
+                    }
+                }
                 setAuthRegClass()
             } catch (e: Exception) {
                 errorMessageText(e.message.toString())

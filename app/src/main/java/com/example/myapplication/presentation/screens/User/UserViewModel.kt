@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import com.example.myapplication.domain.usecases.card.DeleteAllCardsUseCase
 import com.example.myapplication.domain.usecases.user.DeleteUserUseCase
 import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
+import com.example.myapplication.presantation.navigation.Screens
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -29,8 +30,12 @@ class UserViewModel @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             deleteUserUseCase.invoke()
             deleteAllCardsUseCase.invoke()
-            authRegViewModel.isFinish = false
         }
-//        navHostController.navigate(Screens.AuthScreen.rout)
+        authRegViewModel.isFinish = false
+        navHostController.navigate(Screens.AuthScreen.rout) {
+            popUpTo(Screens.AuthScreen.rout) {
+                inclusive = true
+            }
+        }
     }
 }

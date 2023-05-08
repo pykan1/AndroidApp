@@ -16,25 +16,27 @@ import com.example.myapplication.presantation.ui.theme.topbar
 @Composable
 fun SetupNavHostScreen(navController: NavHostController, authRegViewModel: AuthRegViewModel) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                modifier = Modifier.height(40.dp),
-                backgroundColor = topbar,
-                title = { Text(text = "") },
-                navigationIcon = run {
-                    {
-                        IconButton(onClick = { navController.navigateUp() }) {
-                            Icon(
-                                imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = ""
-                            )
-                        }
-                    }
-                }
-            )
-        },
+//        topBar = {
+//            TopAppBar(
+//                modifier = Modifier.height(40.dp),
+//                backgroundColor = topbar,
+//                title = { Text(text = "") },
+//                navigationIcon = run {
+//                    {
+//                        IconButton(onClick = { navController.navigateUp() }) {
+//                            Icon(
+//                                imageVector = Icons.Filled.ArrowBack,
+//                                contentDescription = ""
+//                            )
+//                        }
+//                    }
+//                }
+//            )
+//        },
         bottomBar = {
-            BottomBar(navController = navController)
+            if (authRegViewModel.isFinish) {
+                BottomBar(navController = navController)
+            }
         },
         content = { padding ->
             Box(modifier = Modifier.padding(padding)) {
