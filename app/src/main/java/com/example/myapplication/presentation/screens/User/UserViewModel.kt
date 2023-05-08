@@ -31,9 +31,7 @@ class UserViewModel @Inject constructor(
         }
         authRegViewModel.isFinish = false
         navHostController.navigate(Screens.AuthScreen.rout) {
-            popUpTo(Screens.AuthScreen.rout) {
-                inclusive = true
-            }
+            popUpTo(0)
         }
     }
 }

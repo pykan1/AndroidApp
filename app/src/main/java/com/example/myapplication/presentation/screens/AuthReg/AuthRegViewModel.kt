@@ -39,7 +39,7 @@ class AuthRegViewModel @Inject constructor(
         throwable.printStackTrace()
     }
 
-    fun setAuthRegClass() {
+    private fun setAuthRegClass() {
         viewModelScope.launch{
             auth.emit(
                 AuthRegClass()
@@ -77,6 +77,12 @@ class AuthRegViewModel @Inject constructor(
         }
     }
 
+    private fun navigateToMain (navController: NavController) {
+        navController.navigate(Screens.MainScreen.rout) {
+            popUpTo(0)
+        }
+    }
+
     fun register(authRegClass: AuthRegClass, navController: NavController) {
         CoroutineScope(Dispatchers.IO + coroutineExceptionHandler).launch {
             try {
@@ -90,11 +96,7 @@ class AuthRegViewModel @Inject constructor(
                 }
                 isFinish = true
                 withContext(Dispatchers.Main) {
-                    navController.navigate(Screens.MainScreen.rout) {
-                        popUpTo(Screens.MainScreen.rout) {
-                            inclusive = true
-                        }
-                    }
+                    navigateToMain(navController)
                 }
                 setAuthRegClass()
             } catch (e: Exception) {
@@ -115,11 +117,7 @@ class AuthRegViewModel @Inject constructor(
                 }
                 isFinish = true
                 withContext(Dispatchers.Main) {
-                    navController.navigate(Screens.MainScreen.rout) {
-                        popUpTo(Screens.MainScreen.rout) {
-                            inclusive = true
-                        }
-                    }
+                    navigateToMain(navController)
                 }
                 setAuthRegClass()
             } catch (e: Exception) {

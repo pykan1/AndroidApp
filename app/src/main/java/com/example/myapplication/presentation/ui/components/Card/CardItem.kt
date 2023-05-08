@@ -36,6 +36,7 @@ import com.example.myapplication.presantation.ui.theme.Button_item_row
 import com.example.myapplication.presantation.ui.theme.text_auth
 import com.example.myapplication.R
 import com.example.myapplication.presantation.ui.theme.Background_main
+import com.example.myapplication.presentation.ui.components.Card.CardViewModel
 import kotlinx.coroutines.delay
 import me.saket.swipe.SwipeAction
 import me.saket.swipe.SwipeableActionsBox
@@ -45,7 +46,7 @@ import kotlin.concurrent.schedule
 
 @Composable
 fun CardItem(navHostController: NavHostController, cardModel: CardModel, viewModel: MainViewModel) {
-    val viewModelOnly = hiltViewModel<MainViewModel>()
+    val viewModelOnly = hiltViewModel<CardViewModel>()
     androidx.compose.material.Card(
         modifier = Modifier.wrapContentSize(),
         shape = RoundedCornerShape(15.dp)

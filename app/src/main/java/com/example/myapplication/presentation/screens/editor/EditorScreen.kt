@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Popup
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.*
@@ -159,7 +160,11 @@ fun EditorScreen(
                 viewModel.addCard(
                     stateCard
                 ) {
-                    navController.navigate(Screens.MainScreen.rout)
+                    navController.navigate(Screens.MainScreen.rout) {
+                        popUpTo(Screens.MainScreen.rout) {
+                            inclusive = true
+                        }
+                    }
                 }
             },
             modifier = modifier.fillMaxWidth(),
