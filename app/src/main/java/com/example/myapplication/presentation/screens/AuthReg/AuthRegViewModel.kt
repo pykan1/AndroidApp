@@ -7,18 +7,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.myapplication.data.api.RemoteDataSource
 import com.example.myapplication.data.api.model.AuthRegClass
-import com.example.myapplication.data.api.model.UserJsonClass
 import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.usecases.AddCardUseCase
-import com.example.myapplication.domain.usecases.CommitUserJsonUseCase
-import com.example.myapplication.domain.usecases.GetAllCardsUseCase
-import com.example.myapplication.domain.usecases.InsertUserUseCase
+import com.example.myapplication.domain.usecases.card.AddCardUseCase
+import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
+import com.example.myapplication.domain.usecases.user.InsertUserUseCase
 
-import com.example.myapplication.presantation.navigation.Screens
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler

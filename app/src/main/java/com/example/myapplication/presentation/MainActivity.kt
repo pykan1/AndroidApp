@@ -10,32 +10,15 @@ import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.data.local.UserRepositoryImpl
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.model.UserModel
-import com.example.myapplication.domain.usecases.GetAllUserUseCase
+import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
 import com.example.myapplication.presantation.navigation.*
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegScreen
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
-import com.example.myapplication.presantation.screens.User.UserViewModel
-import com.example.myapplication.presantation.screens.main.MainViewModel
-import com.example.myapplication.presantation.ui.theme.EasycalcTheme
-import com.example.myapplication.presantation.ui.theme.topbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
-import java.lang.reflect.Array.get
 import javax.inject.Inject
 
 @AndroidEntryPoint

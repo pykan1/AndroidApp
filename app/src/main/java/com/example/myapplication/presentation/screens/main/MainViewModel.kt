@@ -1,11 +1,8 @@
 package com.example.myapplication.presantation.screens.main
 
-import android.content.Context
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,11 +10,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.api.model.UserJsonClass
 import com.example.myapplication.domain.model.CardModel
 import com.example.myapplication.domain.model.UserModel
-import com.example.myapplication.domain.usecases.CommitUserJsonUseCase
-import com.example.myapplication.domain.usecases.DeleteCardUseCase
-import com.example.myapplication.domain.usecases.GetAllCardsUseCase
-import com.example.myapplication.domain.usecases.GetAllUserUseCase
-import com.example.myapplication.presantation.screens.editor.AddViewModel
+import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
+import com.example.myapplication.domain.usecases.card.DeleteCardUseCase
+import com.example.myapplication.domain.usecases.card.GetAllCardsUseCase
+import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope

@@ -1,19 +1,17 @@
 package com.example.myapplication.presantation.screens.editor
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.R
 import com.example.myapplication.data.api.model.UserJsonClass
 import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.usecases.AddCardUseCase
-import com.example.myapplication.domain.usecases.CommitUserJsonUseCase
-import com.example.myapplication.domain.usecases.GetAllCardsUseCase
-import com.example.myapplication.domain.usecases.GetAllUserUseCase
+import com.example.myapplication.domain.usecases.card.AddCardUseCase
+import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
+import com.example.myapplication.domain.usecases.card.GetAllCardsUseCase
+import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

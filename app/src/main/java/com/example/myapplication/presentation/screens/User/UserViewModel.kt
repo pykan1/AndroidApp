@@ -5,11 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
-import com.example.myapplication.domain.usecases.DeleteAllCardsUseCase
-import com.example.myapplication.domain.usecases.DeleteUserUseCase
-import com.example.myapplication.domain.usecases.GetAllUserUseCase
+import com.example.myapplication.domain.usecases.card.DeleteAllCardsUseCase
+import com.example.myapplication.domain.usecases.user.DeleteUserUseCase
+import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
-import com.example.myapplication.presantation.screens.main.MainViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

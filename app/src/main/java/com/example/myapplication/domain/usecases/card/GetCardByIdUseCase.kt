@@ -1,4 +1,4 @@
-package com.example.myapplication.domain.usecases
+package com.example.myapplication.domain.usecases.card
 
 import com.example.myapplication.domain.repository.CardRepository
 import javax.inject.Inject
