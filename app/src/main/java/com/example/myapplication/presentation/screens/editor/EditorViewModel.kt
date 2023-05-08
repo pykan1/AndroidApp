@@ -29,12 +29,17 @@ class AddViewModel @Inject constructor(
     var indexImage = mutableStateOf(0)
     var errorMessage by mutableStateOf("")
     var isAlertDialog by mutableStateOf(false)
+    var isInformation by mutableStateOf(false)
 
     val imageIdList = listOf(
         R.drawable.math,
         R.drawable.physics,
         R.drawable.it
     )
+
+    fun changeIsInformation () {
+        isInformation = !isInformation
+    }
 
     fun changeIndex() {
         if (indexImage.value == 2) {

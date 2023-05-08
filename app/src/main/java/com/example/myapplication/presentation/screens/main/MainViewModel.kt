@@ -30,7 +30,6 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
     var data: List<UserModel> = emptyList()
     var isExpand by mutableStateOf(false)
-    var isFinish by mutableStateOf(false)
     private val _cards = MutableLiveData<List<CardModel>>()
     val cards: LiveData<List<CardModel>>
         get() = _cards
@@ -39,14 +38,7 @@ class MainViewModel @Inject constructor(
         getAllCards()
     }
 
-    fun getAllUser(){
-        CoroutineScope(Dispatchers.IO).launch {
-            data = getAllUserUseCase.invoke()
-            isFinish = !isFinish
-        }
-    }
-
-    fun commitJson() {
+    private fun commitJson() {
         viewModelScope.launch {
             val data = getAllCardsUseCase.invoke()
             val user = getAllUserUseCase.invoke()
@@ -63,15 +55,11 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getAllCards() {
+    private fun getAllCards() {
         viewModelScope.launch {
             getAllCardsUseCase.invoke().let {
                 _cards.postValue(it)
             }
         }
-    }
-
-    fun isExpandChange() {
-        isExpand = !isExpand
     }
 }
