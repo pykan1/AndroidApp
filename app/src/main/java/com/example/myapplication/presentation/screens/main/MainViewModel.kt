@@ -8,16 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.api.model.UserJsonClass
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.model.UserModel
-import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
-import com.example.myapplication.domain.usecases.card.DeleteCardUseCase
-import com.example.myapplication.domain.usecases.card.GetAllCardsUseCase
-import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.local.model.UserModel
+import com.example.myapplication.data.usecases.user.CommitUserJsonUseCase
+import com.example.myapplication.data.usecases.card.DeleteCardUseCase
+import com.example.myapplication.data.usecases.card.GetAllCardsUseCase
+import com.example.myapplication.data.usecases.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

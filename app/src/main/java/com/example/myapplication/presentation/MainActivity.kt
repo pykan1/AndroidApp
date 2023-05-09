@@ -13,7 +13,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
+import com.example.myapplication.data.usecases.user.GetAllUserUseCase
 import com.example.myapplication.presantation.navigation.*
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegScreen
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel

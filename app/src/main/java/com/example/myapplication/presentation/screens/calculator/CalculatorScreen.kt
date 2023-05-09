@@ -25,8 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.presantation.navigation.Screens
+import com.example.myapplication.data.local.model.CardModel
 import com.example.myapplication.presantation.ui.components.Text_fields
 import com.example.myapplication.presantation.ui.theme.Background_main
 import com.example.myapplication.presantation.ui.theme.Body_main

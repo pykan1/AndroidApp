@@ -1,4 +1,4 @@
-package com.example.myapplication.domain.usecases.user
+package com.example.myapplication.data.usecases.user
 
 import com.example.myapplication.data.api.RemoteDataSource
 import com.example.myapplication.data.api.model.AuthRegClass

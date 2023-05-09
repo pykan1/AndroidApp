@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.R
 import com.example.myapplication.data.api.model.UserJsonClass
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.usecases.card.AddCardUseCase
-import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
-import com.example.myapplication.domain.usecases.card.GetAllCardsUseCase
-import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.usecases.card.AddCardUseCase
+import com.example.myapplication.data.usecases.user.CommitUserJsonUseCase
+import com.example.myapplication.data.usecases.card.GetAllCardsUseCase
+import com.example.myapplication.data.usecases.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

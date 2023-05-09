@@ -6,8 +6,8 @@ import com.example.myapplication.data.api.PostService
 import com.example.myapplication.data.local.AppDatabase
 import com.example.myapplication.data.local.AppDatabase2
 
-import com.example.myapplication.domain.repository.CardRepository
-import com.example.myapplication.domain.repository.UserRepository
+import com.example.myapplication.data.local.repository.CardRepository
+import com.example.myapplication.data.local.repository.UserRepository
 
 import dagger.Module
 import dagger.Provides

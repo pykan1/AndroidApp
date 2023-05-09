@@ -2,12 +2,10 @@ package com.example.myapplication.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.model.UserModel
-import com.example.myapplication.domain.repository.CardRepository
-import com.example.myapplication.domain.repository.UserRepository
-
-import javax.inject.Named
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.local.model.UserModel
+import com.example.myapplication.data.local.repository.CardRepository
+import com.example.myapplication.data.local.repository.UserRepository
 
 
 @Database(entities = [CardModel::class], version = 1)

@@ -1,10 +1,9 @@
-package com.example.myapplication.domain.repository
+package com.example.myapplication.data.local.repository
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.myapplication.domain.model.UserModel
-import javax.inject.Named
+import com.example.myapplication.data.local.model.UserModel
 
 @Dao
 interface UserRepository {

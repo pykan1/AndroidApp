@@ -4,28 +4,21 @@ import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.usecases.user.GetAllUserUseCase
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegScreen
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
 import com.example.myapplication.presantation.screens.User.UserScreen
 import com.example.myapplication.presantation.screens.calculator.CalculatorScreen
 import com.example.myapplication.presantation.screens.calculator2.Calculator2Screen
-import com.example.myapplication.presantation.screens.editor.AddViewModel
 import com.example.myapplication.presantation.screens.editor.EditorScreen
 import com.example.myapplication.presantation.screens.main.MainScreen
 import com.example.myapplication.presentation.navigation.NavigationViewModel
-import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
-import kotlin.math.log
 
 lateinit var getAllUserUseCase: GetAllUserUseCase
 

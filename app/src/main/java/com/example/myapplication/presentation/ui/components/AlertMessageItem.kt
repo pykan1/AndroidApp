@@ -6,8 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.compose.material.*
-import androidx.navigation.NavHostController
-import com.example.myapplication.domain.model.CardModel
+import com.example.myapplication.data.local.model.CardModel
 import com.example.myapplication.presantation.screens.editor.AddViewModel
 
 @Composable

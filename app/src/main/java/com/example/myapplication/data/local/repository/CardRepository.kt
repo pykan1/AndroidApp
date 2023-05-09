@@ -1,14 +1,10 @@
-package com.example.myapplication.domain.repository
+package com.example.myapplication.data.local.repository
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.myapplication.domain.model.CardModel
-import dagger.Module
-import dagger.Provides
-import javax.inject.Named
-import javax.inject.Singleton
+import com.example.myapplication.data.local.model.CardModel
 
 @Dao
 interface CardRepository {

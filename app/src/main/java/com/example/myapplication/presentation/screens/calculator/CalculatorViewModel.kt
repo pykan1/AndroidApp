@@ -2,9 +2,8 @@ package com.example.myapplication.presantation.screens.calculator
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.domain.model.Calc
-import com.example.myapplication.domain.model.CardModel
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.example.myapplication.presentation.screens.calculator.Calc
+import com.example.myapplication.data.local.model.CardModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

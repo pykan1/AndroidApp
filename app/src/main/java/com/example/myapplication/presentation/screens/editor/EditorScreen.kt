@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,12 +19,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Popup
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.*
 import com.example.myapplication.R
-import com.example.myapplication.domain.model.CardModel
 import com.example.myapplication.presantation.navigation.Screens
 import com.example.myapplication.presantation.ui.components.AlertMessage
 import com.example.myapplication.presantation.ui.theme.*

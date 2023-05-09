@@ -1,7 +1,7 @@
-package com.example.myapplication.data.local
+package com.example.myapplication.data.local.repositoryImpl
 
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.repository.CardRepository
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.local.repository.CardRepository
 import javax.inject.Inject
 
 class CardRepositoryImpl @Inject constructor(private val cardRepositoryImpl: CardRepository) {

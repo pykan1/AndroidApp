@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
-import com.example.myapplication.domain.usecases.LogOutUseCase
-import com.example.myapplication.domain.usecases.card.DeleteAllCardsUseCase
-import com.example.myapplication.domain.usecases.user.DeleteUserUseCase
-import com.example.myapplication.domain.usecases.user.GetAllUserUseCase
+import com.example.myapplication.data.usecases.LogOutUseCase
+import com.example.myapplication.data.usecases.card.DeleteAllCardsUseCase
+import com.example.myapplication.data.usecases.user.DeleteUserUseCase
+import com.example.myapplication.data.usecases.user.GetAllUserUseCase
 import com.example.myapplication.presantation.navigation.Screens
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,11 +1,5 @@
 package com.example.myapplication.presantation.ui.components
 
-import android.util.Log
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,20 +22,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-import com.example.myapplication.domain.model.CardModel
+import com.example.myapplication.data.local.model.CardModel
 import com.example.myapplication.presantation.screens.main.MainViewModel
 import com.example.myapplication.presantation.ui.theme.Button_item_row
 import com.example.myapplication.presantation.ui.theme.text_auth
 import com.example.myapplication.R
 import com.example.myapplication.presantation.ui.theme.Background_main
 import com.example.myapplication.presentation.ui.components.Card.CardViewModel
-import kotlinx.coroutines.delay
 import me.saket.swipe.SwipeAction
 import me.saket.swipe.SwipeableActionsBox
-import java.util.*
-import kotlin.concurrent.schedule
 
 
 @Composable

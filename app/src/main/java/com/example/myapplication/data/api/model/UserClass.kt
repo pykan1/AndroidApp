@@ -1,7 +1,7 @@
 package com.example.myapplication.data.api.model
 
 import com.example.myapplication.R
-import com.example.myapplication.domain.model.CardModel
+import com.example.myapplication.data.local.model.CardModel
 import com.google.gson.Gson
 
 val items = arrayOf(

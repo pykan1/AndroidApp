@@ -9,10 +9,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.myapplication.data.api.RemoteDataSource
 import com.example.myapplication.data.api.model.AuthRegClass
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.usecases.card.AddCardUseCase
-import com.example.myapplication.domain.usecases.user.CommitUserJsonUseCase
-import com.example.myapplication.domain.usecases.user.InsertUserUseCase
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.usecases.card.AddCardUseCase
+import com.example.myapplication.data.usecases.user.CommitUserJsonUseCase
+import com.example.myapplication.data.usecases.user.InsertUserUseCase
 import com.example.myapplication.presantation.navigation.Screens
 
 import com.google.gson.Gson
@@ -26,7 +26,6 @@ class AuthRegViewModel @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val insertUserUseCase: InsertUserUseCase,
     private val addCardUseCase: AddCardUseCase,
-    private val commitUserJsonUseCase: CommitUserJsonUseCase
 ) : ViewModel() {
     var isLoading by mutableStateOf(false)
     val authReg = mapOf(true to "Войти", false to "Регистрация")

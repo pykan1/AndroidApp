@@ -1,4 +1,4 @@
-package com.example.myapplication.domain.model
+package com.example.myapplication.presentation.screens.calculator
 
 data class Calc(
     var isExpanded: Boolean = false,

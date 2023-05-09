@@ -1,9 +1,7 @@
-package com.example.myapplication.data.local
+package com.example.myapplication.data.local.repositoryImpl
 
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.model.UserModel
-import com.example.myapplication.domain.repository.CardRepository
-import com.example.myapplication.domain.repository.UserRepository
+import com.example.myapplication.data.local.model.UserModel
+import com.example.myapplication.data.local.repository.UserRepository
 
 import javax.inject.Inject
 

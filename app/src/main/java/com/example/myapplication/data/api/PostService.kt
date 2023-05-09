@@ -1,15 +1,9 @@
 package com.example.myapplication.data.api
 
 import com.example.myapplication.data.api.model.AuthRegClass
-import com.example.myapplication.data.api.model.UserClass
 import com.example.myapplication.data.api.model.UserJsonClass
-import com.example.myapplication.domain.model.CardModel
-import com.example.myapplication.domain.model.UserModel
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.HiltAndroidApp
-import dagger.hilt.components.SingletonComponent
+import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.data.local.model.UserModel
 import retrofit2.http.Body
 import retrofit2.http.POST
 
