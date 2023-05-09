@@ -2,7 +2,6 @@ package com.example.myapplication.presantation
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
@@ -13,13 +12,9 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.data.usecases.user.GetAllUserUseCase
 import com.example.myapplication.presantation.navigation.*
-import com.example.myapplication.presantation.screens.AuthReg.AuthRegScreen
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

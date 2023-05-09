@@ -10,9 +10,8 @@ import androidx.navigation.NavController
 import com.example.myapplication.data.api.RemoteDataSource
 import com.example.myapplication.data.api.model.AuthRegClass
 import com.example.myapplication.data.local.model.CardModel
-import com.example.myapplication.data.usecases.card.AddCardUseCase
-import com.example.myapplication.data.usecases.user.CommitUserJsonUseCase
-import com.example.myapplication.data.usecases.user.InsertUserUseCase
+import com.example.myapplication.domain.usecase.card.AddCardUseCase
+import com.example.myapplication.domain.usecase.user.InsertUserUseCase
 import com.example.myapplication.presantation.navigation.Screens
 
 import com.google.gson.Gson

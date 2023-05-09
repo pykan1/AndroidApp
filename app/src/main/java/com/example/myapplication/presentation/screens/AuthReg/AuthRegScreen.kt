@@ -31,7 +31,6 @@ import androidx.navigation.NavHostController
 import com.example.myapplication.data.api.model.AuthRegClass
 import com.example.myapplication.presantation.navigation.Screens
 import com.example.myapplication.presantation.navigation.SetupNavHostScreen
-import com.example.myapplication.presantation.screens.editor.AddViewModel
 import com.example.myapplication.presantation.ui.theme.*
 import javax.inject.Inject
 

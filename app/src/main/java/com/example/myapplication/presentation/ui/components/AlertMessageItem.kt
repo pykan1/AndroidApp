@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.compose.material.*
 import com.example.myapplication.data.local.model.CardModel
-import com.example.myapplication.presantation.screens.editor.AddViewModel
+import com.example.myapplication.presantation.screens.editor.EditorViewModel
 
 @Composable
-fun AlertMessage(viewModel: AddViewModel, cardModel: CardModel, navController: NavController) {
+fun AlertMessage(viewModel: EditorViewModel, cardModel: CardModel, navController: NavController) {
     AlertDialog(
         onDismissRequest = {
         },

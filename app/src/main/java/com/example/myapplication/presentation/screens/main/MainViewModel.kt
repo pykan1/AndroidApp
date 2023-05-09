@@ -10,10 +10,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.api.model.UserJsonClass
 import com.example.myapplication.data.local.model.CardModel
 import com.example.myapplication.data.local.model.UserModel
-import com.example.myapplication.data.usecases.user.CommitUserJsonUseCase
-import com.example.myapplication.data.usecases.card.DeleteCardUseCase
-import com.example.myapplication.data.usecases.card.GetAllCardsUseCase
-import com.example.myapplication.data.usecases.user.GetAllUserUseCase
+import com.example.myapplication.domain.usecase.CommitJsonUseCase
+import com.example.myapplication.domain.usecase.card.DeleteCardUseCase
+import com.example.myapplication.domain.usecase.card.GetAllCardsUseCase
+import com.example.myapplication.domain.usecase.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     private val getAllCardsUseCase: GetAllCardsUseCase,
     private val deleteCardUseCase: DeleteCardUseCase,
     private val getAllUserUseCase: GetAllUserUseCase,
-    private val commitUserJsonUseCase: CommitUserJsonUseCase
+    private val commitJsonUseCase: CommitJsonUseCase
 ) : ViewModel() {
     var data: List<UserModel> = emptyList()
     var isExpand by mutableStateOf(false)
@@ -36,20 +36,12 @@ class MainViewModel @Inject constructor(
         getAllCards()
     }
 
-    private fun commitJson() {
-        viewModelScope.launch {
-            val data = getAllCardsUseCase.invoke()
-            val user = getAllUserUseCase.invoke()
-            commitUserJsonUseCase.invoke(UserJsonClass(userJson = Gson().toJson(data.toTypedArray()), refresh_token = user[user.size-1].refresh_token))
-        }
-    }
-
     fun deleteCard(cardModel: CardModel) {
         viewModelScope.launch {
             deleteCardUseCase.invoke(cardModel).let {
                 _cards.postValue(_cards.value!!.filterNot { it == cardModel })
             }
-            commitJson()
+            commitJsonUseCase.invoke()
         }
     }
 

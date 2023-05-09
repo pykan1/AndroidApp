@@ -36,7 +36,7 @@ import me.saket.swipe.SwipeableActionsBox
 
 @Composable
 fun CardItem(navHostController: NavHostController, cardModel: CardModel, viewModel: MainViewModel) {
-    val viewModelOnly = hiltViewModel<CardViewModel>()
+    val viewModelOnly = CardViewModel()
     androidx.compose.material.Card(
         modifier = Modifier.wrapContentSize(),
         shape = RoundedCornerShape(15.dp)
@@ -93,7 +93,7 @@ fun CardItem(navHostController: NavHostController, cardModel: CardModel, viewMod
                             viewModelOnly.isExpandChange()
                         },
                         fontSize = 15.sp,
-                        maxLines = if (viewModel.isExpand) 10 else 1,
+                        maxLines = if (viewModelOnly.isExpand) 10 else 1,
                         text = cardModel.body,
                         overflow = TextOverflow.Ellipsis
                     )

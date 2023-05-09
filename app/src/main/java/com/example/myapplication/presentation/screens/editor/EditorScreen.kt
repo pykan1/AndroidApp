@@ -33,7 +33,7 @@ import com.example.myapplication.presentation.ui.components.InformationItem
 fun EditorScreen(
     navController: NavController
 ) {
-    val viewModel = hiltViewModel<AddViewModel>()
+    val viewModel = hiltViewModel<EditorViewModel>()
     val stateCard by viewModel.cardModel.collectAsState()
     val composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.backgound))
     val progress by animateLottieCompositionAsState(
@@ -204,7 +204,7 @@ fun EditorScreen(
                 )
         }
         if (viewModel.isInformation) {
-            InformationItem()
+            InformationItem(addViewModel = viewModel)
         }
     }
 }

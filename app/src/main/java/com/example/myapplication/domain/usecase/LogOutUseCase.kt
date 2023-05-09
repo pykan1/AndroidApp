@@ -1,7 +1,7 @@
-package com.example.myapplication.data.usecases
+package com.example.myapplication.domain.usecase
 
-import com.example.myapplication.data.usecases.card.DeleteAllCardsUseCase
-import com.example.myapplication.data.usecases.user.DeleteUserUseCase
+import com.example.myapplication.domain.usecase.card.DeleteAllCardsUseCase
+import com.example.myapplication.domain.usecase.user.DeleteUserUseCase
 import javax.inject.Inject
 
 class LogOutUseCase @Inject constructor(

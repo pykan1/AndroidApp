@@ -10,7 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.myapplication.data.local.model.CardModel
-import com.example.myapplication.data.usecases.user.GetAllUserUseCase
+import com.example.myapplication.domain.usecase.user.GetAllUserUseCase
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegScreen
 import com.example.myapplication.presantation.screens.AuthReg.AuthRegViewModel
 import com.example.myapplication.presantation.screens.User.UserScreen

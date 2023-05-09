@@ -8,10 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.R
 import com.example.myapplication.data.api.model.UserJsonClass
 import com.example.myapplication.data.local.model.CardModel
-import com.example.myapplication.data.usecases.card.AddCardUseCase
-import com.example.myapplication.data.usecases.user.CommitUserJsonUseCase
-import com.example.myapplication.data.usecases.card.GetAllCardsUseCase
-import com.example.myapplication.data.usecases.user.GetAllUserUseCase
+import com.example.myapplication.domain.usecase.CommitJsonUseCase
+import com.example.myapplication.domain.usecase.card.AddCardUseCase
+import com.example.myapplication.domain.usecase.card.GetAllCardsUseCase
+import com.example.myapplication.domain.usecase.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,11 +19,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddViewModel @Inject constructor(
+class EditorViewModel @Inject constructor(
     private val addCardUseCase: AddCardUseCase,
-    private val commitUserJsonUseCase: CommitUserJsonUseCase,
+    private val commitJsonUseCase: CommitJsonUseCase,
     private val getAllCardsUseCase: GetAllCardsUseCase,
-    private val getAllUserUseCase: GetAllUserUseCase
+    private val getAllUserUseCase: GetAllUserUseCase,
 ) : ViewModel() {
     var cardModel = MutableStateFlow(CardModel())
     var indexImage = mutableStateOf(0)
@@ -119,17 +119,18 @@ class AddViewModel @Inject constructor(
         }
     }
 
-    private fun commitJson() {
+    fun testCard() {
         viewModelScope.launch {
-            val data = getAllCardsUseCase.invoke()
-            val user = getAllUserUseCase.invoke()
-            commitUserJsonUseCase.invoke(
-                UserJsonClass(
-                    userJson = Gson().toJson(data.toTypedArray()),
-                    refresh_token = user[user.size - 1].refresh_token
+            cardModel.emit(
+                CardModel(
+                    title = "Сила тока",
+                    body = "Сила тока — это физическая величина, которая показывает, какой заряд прошел через проводник за единицу времени.",
+                    formula = "q:t",
+                    arrayhint = "Электрический заряд, время"
                 )
             )
         }
+        isInformation = false
     }
 
     fun addCard(
@@ -143,7 +144,7 @@ class AddViewModel @Inject constructor(
                 if (cardModel in cards) isAlertDialog = true
                 else {
                     addCardUseCase.invoke(cardModel = cardModel)
-                    commitJson()
+                    commitJsonUseCase.invoke()
                     onSuccess()
                 }
             } catch (e: Exception) {
