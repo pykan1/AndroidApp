@@ -1,6 +1,7 @@
 package com.example.myapplication.presantation.screens.editor
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -35,18 +36,8 @@ fun EditorScreen(
 ) {
     val viewModel = hiltViewModel<EditorViewModel>()
     val stateCard by viewModel.cardModel.collectAsState()
-    val composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.backgound))
-    val progress by animateLottieCompositionAsState(
-        composition = composition.value,
-        iterations = LottieConstants.IterateForever
-    )
+    val stateCard2 by viewModel.testCardModel.collectAsState()
     val modifier = Modifier.padding(5.dp)
-//    Box(modifier = Modifier.fillMaxSize()) {
-//        LottieAnimation(
-//            modifier = Modifier.fillMaxSize(),
-//            composition = composition.value,
-//            progress = { progress }
-//        )
     Scaffold(
         modifier = Modifier.pointerInput(Unit) {
             detectTapGestures(onTap = {
@@ -87,7 +78,7 @@ fun EditorScreen(
                 contentAlignment = Alignment.BottomEnd
             ) {
                 Image(
-                    painter = painterResource(id = stateCard.imageId),  //переключается только после написания чего либо в других полях
+                    painter = painterResource(id = stateCard2.imageId),  //переключается только после написания чего либо в других полях
                     contentDescription = "image",
                     contentScale = ContentScale.Crop,
                     modifier = modifier
@@ -97,8 +88,8 @@ fun EditorScreen(
                 )
                 Button(
                     onClick = {
-                        viewModel.changeIndex()
                         viewModel.setImageId()
+                        Log.d("11", "bruh ${stateCard.imageId}")
                     },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Title_main,

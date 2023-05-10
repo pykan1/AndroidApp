@@ -12,6 +12,7 @@ import com.example.myapplication.data.local.model.CardModel
 import com.example.myapplication.data.local.model.UserModel
 import com.example.myapplication.domain.usecase.CommitJsonUseCase
 import com.example.myapplication.domain.usecase.card.DeleteCardUseCase
+import com.example.myapplication.domain.usecase.card.FindByTitleUseCase
 import com.example.myapplication.domain.usecase.card.GetAllCardsUseCase
 import com.example.myapplication.domain.usecase.user.GetAllUserUseCase
 import com.google.gson.Gson
@@ -24,8 +25,10 @@ class MainViewModel @Inject constructor(
     private val getAllCardsUseCase: GetAllCardsUseCase,
     private val deleteCardUseCase: DeleteCardUseCase,
     private val getAllUserUseCase: GetAllUserUseCase,
+    private val findByTitleUseCase: FindByTitleUseCase,
     private val commitJsonUseCase: CommitJsonUseCase
 ) : ViewModel() {
+    var subTitle by mutableStateOf("")
     var data: List<UserModel> = emptyList()
     var isExpand by mutableStateOf(false)
     private val _cards = MutableLiveData<List<CardModel>>()
@@ -45,11 +48,27 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getAllCards() {
+    fun getAllCards() {
         viewModelScope.launch {
             getAllCardsUseCase.invoke().let {
                 _cards.postValue(it)
             }
         }
+    }
+
+//    fun searchByTitle(subTitle: String) {
+//        viewModelScope.launch {
+//            _cards.postValue(findByTitleUseCase.invoke(subTitle))
+//        }
+//    }
+
+    fun searchByTitle(subTitle: String) {
+        viewModelScope.launch {
+            _cards.postValue(_cards.value!!.filter { subTitle.lowercase() in it.title.lowercase() })
+        }
+    }
+
+    fun setSubString(str: String) {
+        subTitle = str
     }
 }

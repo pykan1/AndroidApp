@@ -21,6 +21,9 @@ interface CardRepository {
     @Delete
     suspend fun deleteCard(cardModel: CardModel)
 
+    @Query("SELECT * FROM card WHERE title LIKE :subString")
+    suspend fun searchByTitle(subString: String): List<CardModel>
+
     @Query("SELECT * FROM card WHERE id=:cardId")
     suspend fun getCardById(cardId: Long): CardModel
 }

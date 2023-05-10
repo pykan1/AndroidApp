@@ -1,5 +1,6 @@
 package com.example.myapplication.presantation.screens.editor
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -14,7 +15,11 @@ import com.example.myapplication.domain.usecase.card.GetAllCardsUseCase
 import com.example.myapplication.domain.usecase.user.GetAllUserUseCase
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,10 +31,12 @@ class EditorViewModel @Inject constructor(
     private val getAllUserUseCase: GetAllUserUseCase,
 ) : ViewModel() {
     var cardModel = MutableStateFlow(CardModel())
-    var indexImage = mutableStateOf(0)
+    var indexImage by mutableStateOf(0)
     var errorMessage by mutableStateOf("")
     var isAlertDialog by mutableStateOf(false)
     var isInformation by mutableStateOf(false)
+    val _testCardModel = MutableStateFlow(CardModel())
+    val testCardModel = _testCardModel.asStateFlow()
 
     val imageIdList = listOf(
         R.drawable.math,
@@ -37,24 +44,21 @@ class EditorViewModel @Inject constructor(
         R.drawable.it
     )
 
-    fun changeIsInformation () {
+    fun changeIsInformation() {
         isInformation = !isInformation
-    }
-
-    fun changeIndex() {
-        if (indexImage.value == 2) {
-            indexImage.value = 0
-        } else {
-            indexImage.value++
-        }
     }
 
     fun setImageId() {
         viewModelScope.launch {
-            cardModel.emit(
+//            if (indexImage == 2) {
+//                indexImage = 0
+//            } else {
+//                indexImage++
+//            }
+            _testCardModel.emit(
                 CardModel(
                     title = cardModel.value.title,
-                    imageId = imageIdList[indexImage.value],
+                    imageId = imageIdList[indexImage],
                     body = cardModel.value.body,
                     formula = cardModel.value.formula,
                     arrayhint = cardModel.value.arrayhint,
@@ -71,7 +75,7 @@ class EditorViewModel @Inject constructor(
                     body = cardModel.value.body,
                     formula = cardModel.value.formula,
                     arrayhint = cardModel.value.arrayhint,
-                    imageId = imageIdList[indexImage.value]
+                    imageId = cardModel.value.imageId
                 )
             )
         }
@@ -85,7 +89,7 @@ class EditorViewModel @Inject constructor(
                     body = body,
                     formula = cardModel.value.formula,
                     arrayhint = cardModel.value.arrayhint,
-                    imageId = imageIdList[indexImage.value]
+                    imageId = cardModel.value.imageId
                 )
             )
         }
@@ -99,7 +103,7 @@ class EditorViewModel @Inject constructor(
                     body = cardModel.value.body,
                     formula = formula,
                     arrayhint = cardModel.value.arrayhint,
-                    imageId = imageIdList[indexImage.value]
+                    imageId = cardModel.value.imageId
                 )
             )
         }
@@ -113,7 +117,7 @@ class EditorViewModel @Inject constructor(
                     body = cardModel.value.body,
                     formula = cardModel.value.formula,
                     arrayhint = arrayhint,
-                    imageId = imageIdList[indexImage.value]
+                    imageId = cardModel.value.imageId
                 )
             )
         }
