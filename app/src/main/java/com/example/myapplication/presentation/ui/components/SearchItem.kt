@@ -50,7 +50,9 @@ fun SearchAppBar(
                 IconButton(
                     modifier = Modifier
                         .alpha(ContentAlpha.medium),
-                    onClick = {}
+                    onClick = {
+                        viewModel.searchByTitle()
+                    }
                 ) {
                     Icon(
                         imageVector = Icons.Default.Search,
@@ -82,7 +84,11 @@ fun SearchAppBar(
             ),
             keyboardActions = KeyboardActions(
                 onSearch = {
-                    viewModel.searchByTitle(viewModel.subTitle)
+                    if (viewModel.subTitle.isNotEmpty()) {
+                        viewModel.searchByTitle()
+                    } else {
+                        viewModel.getAllCards()
+                    }
                 }
             ),
             colors = TextFieldDefaults.textFieldColors(

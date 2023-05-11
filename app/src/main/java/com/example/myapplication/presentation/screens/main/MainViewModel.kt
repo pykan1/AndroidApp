@@ -56,13 +56,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-//    fun searchByTitle(subTitle: String) {
-//        viewModelScope.launch {
-//            _cards.postValue(findByTitleUseCase.invoke(subTitle))
-//        }
-//    }
-
-    fun searchByTitle(subTitle: String) {
+    fun searchByTitle() {
         viewModelScope.launch {
             _cards.postValue(_cards.value!!.filter { subTitle.lowercase() in it.title.lowercase() })
         }
