@@ -31,7 +31,6 @@ sealed class Screens(val rout: String, val icon: ImageVector) {
     object Calc2Screen : Screens(rout = "calc2_screen", Icons.Default.Menu)
     object UserScreen : Screens(rout = "user_screen", Icons.Default.AccountBox)
     object AuthScreen : Screens(rout = "authreg_screen", Icons.Default.LocationOn)
-    object SetupNav : Screens(rout = "setup_nav", Icons.Default.LocationOn)
 }
 
 @Composable
