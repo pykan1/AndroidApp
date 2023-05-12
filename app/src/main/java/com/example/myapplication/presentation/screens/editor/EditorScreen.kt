@@ -60,7 +60,8 @@ fun EditorScreen(
                 .verticalScroll(rememberScrollState())
                 .background(Background_main)
                 .clip(RoundedCornerShape(15.dp)),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (viewModel.isAlertDialog) {
                 AlertMessage(
@@ -192,6 +193,7 @@ fun EditorScreen(
                 text = viewModel.errorMessage,
                 modifier = modifier,
                 color = Color.Red,
+                fontSize = 17.sp
                 )
         }
         if (viewModel.isInformation) {

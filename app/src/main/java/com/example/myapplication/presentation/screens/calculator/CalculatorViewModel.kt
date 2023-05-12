@@ -13,7 +13,7 @@ import net.objecthunter.exp4j.ExpressionBuilder
 class CalculatorViewModel: ViewModel() {
     var calc = MutableStateFlow(Calc())
 
-    private fun isNothingChange(cardModel: CardModel) {
+    fun isNothingChange(cardModel: CardModel) {
         if (cardModel.title == "{title}") {
             CoroutineScope(Dispatchers.IO).launch {
                 calc.emit(
@@ -43,30 +43,38 @@ class CalculatorViewModel: ViewModel() {
     fun getAnswer(cardModel: CardModel) {
         val alphabet = "abcdefghijklmnopqrstuvwxyz"
         var formula = cardModel.formula.replace(":", "/")
-        Log.d("Mylog", formula)
+        Log.d("11", formula)
         var char = arrayOf<String>()
-        for (i in formula) {
-            if (i in alphabet) {
+        formula.forEachIndexed { index, i ->
+            try {
+                if (i in alphabet && formula[index+1] !in alphabet) {
+                    char += i.toString()
+                }
+            } catch (e: Exception) {
                 char += i.toString()
             }
         }
-//                        Замена переменных на действительные числа в formula
+//        for (i in formula) {
+//            if (i in alphabet) {
+//                char += i.toString()
+//            }
+//        }
+        Log.d("11", array_strings.toString())
         array_strings.forEachIndexed { index, string_item ->
             try {
-                Log.d("Mylog", "$index, $string_item, ${array_strings.size}")
+                Log.d("11", string_item)
                 formula = formula.replace(char[index], string_item)
             } catch (e: Exception) {
-                Log.d("Mylog", e.message.toString())
+                Log.d("11", e.message.toString())
             }
         }
         try {
-            Log.d("Mylog", formula)
             val ex = ExpressionBuilder(formula).build()
             val result = ex.evaluate()
             calc.value.answear = result.toString()
 
         } catch (e: Exception) {
-            Log.d("Mylog", "${e.message}")
+            Log.d("11", "${e.message}")
         }
 
     }

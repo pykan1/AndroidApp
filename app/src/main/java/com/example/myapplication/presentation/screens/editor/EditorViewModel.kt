@@ -163,9 +163,10 @@ class EditorViewModel @Inject constructor(
 
     private fun handlerEditor() {
         errorMessage = when {
-            cardModel.value.title == "" -> "Название не может быть пустым"
-            cardModel.value.formula == "" -> "Формула не может быть пустой"
-            cardModel.value.arrayhint == "" -> "Перечень формул не может быть пустым"
+            cardModel.value.title == "" -> "Название не может быть пустым."
+            cardModel.value.formula == "" -> "Формула не может быть пустой."
+            cardModel.value.arrayhint == "" -> "Перечень формул не может быть пустым."
+            "/" in cardModel.value.formula -> """Деление указываем как ":", а не "/"."""
             else -> ""
         }
         if (errorMessage != "") {
