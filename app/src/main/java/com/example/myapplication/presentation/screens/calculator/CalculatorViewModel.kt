@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.presentation.screens.calculator.Calc
 import com.example.myapplication.data.local.model.CardModel
+import com.example.myapplication.presentation.navigation.NavigationViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,7 +41,7 @@ class CalculatorViewModel: ViewModel() {
         array_strings = arrayStrings
     }
 
-    fun getAnswer(cardModel: CardModel) {
+    fun getAnswer(cardModel: CardModel, navigationViewModel: NavigationViewModel) {
         val alphabet = "abcdefghijklmnopqrstuvwxyz"
         var formula = cardModel.formula.replace(":", "/")
         Log.d("11", formula)
@@ -70,7 +71,10 @@ class CalculatorViewModel: ViewModel() {
         }
         try {
             val ex = ExpressionBuilder(formula).build()
-            val result = ex.evaluate()
+            val result = if (navigationViewModel.isBigDecimal) {
+                navigationViewModel.convertScientificToDecimal(ex.evaluate())
+            } else ex.evaluate()
+
             calc.value.answear = result.toString()
 
         } catch (e: Exception) {

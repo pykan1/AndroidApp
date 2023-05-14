@@ -30,10 +30,11 @@ import com.example.myapplication.presantation.ui.components.Text_fields
 import com.example.myapplication.presantation.ui.theme.Background_main
 import com.example.myapplication.presantation.ui.theme.Body_main
 import com.example.myapplication.presantation.ui.theme.Title_main
+import com.example.myapplication.presentation.navigation.NavigationViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun CalculatorScreen(card: CardModel) {
+fun CalculatorScreen(card: CardModel, navigationViewModel: NavigationViewModel) {
     val viewModel = hiltViewModel<CalculatorViewModel>()
     val keyboardController = LocalSoftwareKeyboardController.current
     val mContext = LocalContext.current
@@ -116,7 +117,7 @@ fun CalculatorScreen(card: CardModel) {
             Button(
                 onClick = {
                     keyboardController?.hide()
-                    viewModel.getAnswer(card)
+                    viewModel.getAnswer(card, navigationViewModel)
                     viewModel.getStrings(card)
                     viewModel.isButtonChange()
                 },

@@ -54,10 +54,10 @@ fun SetupNavHost (navController: NavHostController, authRegViewModel: AuthRegVie
             EditorScreen(navController = navController)
         }
         composable(route = Screens.Calc2Screen.rout) {
-            Calculator2Screen(navController = navController)
+            Calculator2Screen(navController = navController, viewModel)
         }
         composable(route = Screens.UserScreen.rout) {
-            UserScreen(navController = navController, authRegViewModel)
+            UserScreen(navController = navController, authRegViewModel = authRegViewModel, navigationViewModel = viewModel)
         }
         composable(route = Screens.CalcScreen.rout) {
             val title = it.arguments?.getString("title").toString()
@@ -65,7 +65,7 @@ fun SetupNavHost (navController: NavHostController, authRegViewModel: AuthRegVie
             val formula = it.arguments?.getString("formula").toString()
             val array = it.arguments?.getString("arrayhint").toString()
             if (title == "{title}") {
-                Calculator2Screen(navController = navController)
+                Calculator2Screen(navController = navController, viewModel)
             } else {
                 CalculatorScreen(
                     card = CardModel(
@@ -73,7 +73,8 @@ fun SetupNavHost (navController: NavHostController, authRegViewModel: AuthRegVie
                         body = body,
                         formula = formula,
                         arrayhint = array
-                    )
+                    ),
+                    viewModel
                 )
             }
         }

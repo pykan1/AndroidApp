@@ -34,12 +34,13 @@ import com.example.myapplication.presantation.ui.components.CalculatorButton
 import com.example.myapplication.presantation.ui.theme.Background_main
 import com.example.myapplication.presantation.ui.theme.EasycalcTheme
 import com.example.myapplication.presantation.ui.theme.Orange
+import com.example.myapplication.presentation.navigation.NavigationViewModel
 import net.objecthunter.exp4j.ExpressionBuilder
 import kotlin.math.pow
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun Calculator2Screen(navController: NavController) {
+fun Calculator2Screen(navController: NavController, navigationViewModel: NavigationViewModel) {
     val viewModel = hiltViewModel<Calculator2ViewModel>()
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
     val mContext = LocalContext.current
@@ -289,7 +290,7 @@ fun Calculator2Screen(navController: NavController) {
                         .weight(1f),
                     viewModel = viewModel
                 ) {
-                    viewModel.count()
+                    viewModel.count(navigationViewModel)
                 }
             }
         }

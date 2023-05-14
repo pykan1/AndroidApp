@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.presentation.navigation.NavigationViewModel
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class Calculator2ViewModel : ViewModel() {
@@ -16,7 +17,7 @@ class Calculator2ViewModel : ViewModel() {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
-    fun count() {
+    fun count(navigationViewModel: NavigationViewModel) {
         try {
             //                        if ("E" in result) {
 //                            val eStart = result.indexOf("E", 0)
@@ -28,7 +29,12 @@ class Calculator2ViewModel : ViewModel() {
 //                            }
 //                            subResult.replaceFirst(".", "")
 //                        } else {
-            calculation = ExpressionBuilder(calculation).build().evaluate().toString()
+            calculation = if (navigationViewModel.isBigDecimal) {
+                navigationViewModel.convertScientificToDecimal(
+                    ExpressionBuilder(calculation).build().evaluate()
+                )
+            } else ExpressionBuilder(calculation).build().evaluate().toString()
+
 //                        }
         } catch (e: Exception) {
             calculation = "Error"
