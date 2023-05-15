@@ -19,6 +19,9 @@ interface UserRepository {
     @Query("UPDATE user SET user_data = :newJson WHERE access_token = :accessToken")
     suspend fun updateJson(accessToken: String, newJson: String)
 
+    @Query("UPDATE user SET settings = :newSettings WHERE refresh_token = :refreshToken")
+    suspend fun updateSetting(newSettings: String, refreshToken: String)
+
     @Insert
     suspend fun insertUser(user: UserModel)
 }

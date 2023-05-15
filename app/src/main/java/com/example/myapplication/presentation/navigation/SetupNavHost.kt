@@ -36,10 +36,10 @@ sealed class Screens(val rout: String, val icon: ImageVector) {
 @Composable
 fun SetupNavHost (navController: NavHostController, authRegViewModel: AuthRegViewModel) {
     val viewModel = hiltViewModel<NavigationViewModel>()
-
+    viewModel.initSettings()
     NavHost(
         navController = navController,
-        startDestination = if (viewModel.user) Screens.AuthScreen.rout else Screens.MainScreen.rout
+        startDestination = if (viewModel.user.isEmpty()) Screens.AuthScreen.rout else Screens.MainScreen.rout
     ) {
         composable(route = Screens.AuthScreen.rout) {
             Log.d("11", "AuthScreen")

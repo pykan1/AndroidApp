@@ -14,7 +14,7 @@ abstract class AppDatabase: RoomDatabase() {
 }
 
 
-@Database(entities = [UserModel::class], version = 1)
+@Database(entities = [UserModel::class], version = 2)
 abstract class AppDatabase2: RoomDatabase() {
     abstract fun userDao(): UserRepository
 }

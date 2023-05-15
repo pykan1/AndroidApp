@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -26,6 +28,7 @@ fun UserScreen(
     navigationViewModel: NavigationViewModel
 ) {
     val viewModel = hiltViewModel<UserViewModel>()
+    val stateSettings by navigationViewModel.settings.collectAsState()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -61,8 +64,8 @@ fun UserScreen(
                         )
                     }
                     Switch(
-                        checked = navigationViewModel.isBigDecimal,
-                        onCheckedChange = { navigationViewModel.isBigDecimalChange() }
+                        checked = stateSettings.bigDecimalMode,
+                        onCheckedChange = { navigationViewModel.bigDecimalModeChange() }
                     )
                 }
             }

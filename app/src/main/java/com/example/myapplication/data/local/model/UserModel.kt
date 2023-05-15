@@ -1,9 +1,20 @@
 package com.example.myapplication.data.local.model
 
+import androidx.room.Database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.RoomDatabase
 import com.example.myapplication.R
 import com.google.gson.Gson
+
+@Entity(tableName = "user")
+data class UserModel (
+    @PrimaryKey
+    val refresh_token: String = "",
+    val access_token: String = "",
+    val settings: String = Gson().toJson(SettingsModel()),
+    var user_data: String = Gson().toJson(items))
+
 val items = arrayOf(
     CardModel(
         imageId = R.drawable.math,
@@ -27,10 +38,3 @@ val items = arrayOf(
         arrayhint = "Введите массу, Введите объем"
     )
 )
-
-@Entity(tableName = "user")
-data class UserModel(
-    @PrimaryKey
-    val refresh_token: String = "",
-    val access_token: String = "",
-    var user_data: String = Gson().toJson(items))

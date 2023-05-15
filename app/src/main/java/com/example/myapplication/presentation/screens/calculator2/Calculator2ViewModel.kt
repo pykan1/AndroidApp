@@ -29,7 +29,7 @@ class Calculator2ViewModel : ViewModel() {
 //                            }
 //                            subResult.replaceFirst(".", "")
 //                        } else {
-            calculation = if (navigationViewModel.isBigDecimal) {
+            calculation = if (navigationViewModel.settings.value.bigDecimalMode) {
                 navigationViewModel.convertScientificToDecimal(
                     ExpressionBuilder(calculation).build().evaluate()
                 )

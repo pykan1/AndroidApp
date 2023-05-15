@@ -71,7 +71,7 @@ class CalculatorViewModel: ViewModel() {
         }
         try {
             val ex = ExpressionBuilder(formula).build()
-            val result = if (navigationViewModel.isBigDecimal) {
+            val result = if (navigationViewModel.settings.value.bigDecimalMode) {
                 navigationViewModel.convertScientificToDecimal(ex.evaluate())
             } else ex.evaluate()
 

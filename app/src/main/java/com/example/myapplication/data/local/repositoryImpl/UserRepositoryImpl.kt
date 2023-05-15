@@ -14,4 +14,8 @@ class UserRepositoryImpl @Inject constructor(private val userRepository: UserRep
     suspend fun updateJson(accessToken: String, newJson: String) = userRepository.updateJson(accessToken, newJson)
     suspend fun clearUser() = userRepository.clearUser()
 
+    suspend fun updateSettings(
+        newSettings: String, refreshToken: String
+    ) = userRepository.updateSetting(newSettings = newSettings, refreshToken = refreshToken)
+
 }
