@@ -70,15 +70,15 @@ fun CardItem(navHostController: NavHostController, cardModel: CardModel, viewMod
                     .background(Color.White)
                     .fillMaxWidth()
             ) {
-                Image(
-                    painter = painterResource(id = cardModel.imageId),
-                    contentDescription = "image",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .padding(3.dp)
-                        .size(64.dp)
-                        .clip(CircleShape)
-                )
+//                Image(
+//                    painter = painterResource(id = cardModel.imageId),
+//                    contentDescription = "image",
+//                    contentScale = ContentScale.Crop,
+//                    modifier = Modifier
+//                        .padding(3.dp)
+//                        .size(64.dp)
+//                        .clip(CircleShape)
+//                )
                 Column(
                     modifier = Modifier
                         .padding(start = 10.dp, top = 10.dp, end = 10.dp)

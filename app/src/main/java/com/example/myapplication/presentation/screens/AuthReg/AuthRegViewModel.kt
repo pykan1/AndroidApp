@@ -111,6 +111,7 @@ class AuthRegViewModel @Inject constructor(
             try {
                 handlerAuthReg()
                 val data = remoteDataSource.getLoginData(authRegClass)
+                Log.d("11", data.toString())
                 insertUserUseCase.invoke(data)
                 val userData = Gson().fromJson(data.user_data, Array<CardModel>::class.java)
                 userData.forEach {

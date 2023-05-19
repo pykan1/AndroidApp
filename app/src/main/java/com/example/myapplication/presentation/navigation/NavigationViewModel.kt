@@ -28,14 +28,13 @@ class NavigationViewModel @Inject constructor(
     private val updateSettingsUseCase: UpdateSettingsUseCase
 ) : ViewModel() {
     var settings = MutableStateFlow(SettingsModel())
-    var users: Array<UserModel> = mutableListOf<UserModel>().toTypedArray()
+    var users = runBlocking { getAllUserUseCase.invoke() }
 
     fun initSettings() {
         CoroutineScope(Dispatchers.IO).launch {
             if (getAllUserUseCase.invoke().isNotEmpty()) {
                 val user = async {getAllUserUseCase.invoke()}
                 Log.d("11", user.await().size.toString())
-                users = user.await().toTypedArray()
                 settings.emit(
                     Gson().fromJson(user.await()[user.await().size-1].settings, SettingsModel::class.java)
                 )

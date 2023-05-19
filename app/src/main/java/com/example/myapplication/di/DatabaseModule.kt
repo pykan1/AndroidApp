@@ -34,7 +34,7 @@ object CardDatabaseModule {
     @Provides
     fun providePostService(): PostService {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.108:8080")
+            .baseUrl("http://62.113.106.162:8030")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PostService::class.java)
