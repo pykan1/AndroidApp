@@ -16,5 +16,5 @@ class RemoteDataSource @Inject constructor(private val postService: PostService)
 
     suspend fun getUserJson(userJsonClass: UserJsonClass) = postService.getUserJson(userJsonClass)
 
-    suspend fun updateSettings(settingsModel: SettingsModel) = postService.updateSettings(settingsModel)
+    suspend fun updateSettings(userJsonClass: UserJsonClass) = postService.updateSettings(userJsonClass)
 }

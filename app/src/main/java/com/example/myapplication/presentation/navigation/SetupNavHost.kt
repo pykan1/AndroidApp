@@ -39,7 +39,7 @@ fun SetupNavHost (navController: NavHostController, authRegViewModel: AuthRegVie
     viewModel.initSettings()
     NavHost(
         navController = navController,
-        startDestination = if (viewModel.user.isEmpty()) Screens.AuthScreen.rout else Screens.MainScreen.rout
+        startDestination = if (viewModel.users.isEmpty()) Screens.AuthScreen.rout else Screens.MainScreen.rout
     ) {
         composable(route = Screens.AuthScreen.rout) {
             Log.d("11", "AuthScreen")

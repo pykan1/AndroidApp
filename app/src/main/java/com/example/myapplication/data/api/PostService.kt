@@ -23,5 +23,5 @@ interface PostService {
     suspend fun getUserJson(@Body request: UserJsonClass): Array<CardModel>
 
     @POST("updateSettings")
-    suspend fun updateSettings(@Body request: SettingsModel): Boolean
+    suspend fun updateSettings(@Body request: UserJsonClass): Boolean
 }

@@ -11,6 +11,7 @@ import com.example.myapplication.data.api.RemoteDataSource
 import com.example.myapplication.data.api.model.AuthRegClass
 import com.example.myapplication.data.local.model.CardModel
 import com.example.myapplication.domain.usecase.card.AddCardUseCase
+import com.example.myapplication.domain.usecase.user.GetAllUserUseCase
 import com.example.myapplication.domain.usecase.user.InsertUserUseCase
 import com.example.myapplication.presantation.navigation.Screens
 
@@ -25,6 +26,7 @@ class AuthRegViewModel @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val insertUserUseCase: InsertUserUseCase,
     private val addCardUseCase: AddCardUseCase,
+    private val getAllUserUseCase: GetAllUserUseCase
 ) : ViewModel() {
     var isLoading by mutableStateOf(false)
     val authReg = mapOf(true to "Войти", false to "Регистрация")
@@ -55,6 +57,8 @@ class AuthRegViewModel @Inject constructor(
 
     fun setLogin(item: String) {
         CoroutineScope(Dispatchers.IO).launch {
+            val user = async { getAllUserUseCase.invoke() }
+            Log.d("11", user.await().toString())
             auth.emit(
                 AuthRegClass(
                     login = item,
@@ -87,7 +91,6 @@ class AuthRegViewModel @Inject constructor(
                 handlerAuthReg()
                 val data = remoteDataSource.getRegisterData(authRegClass)
                 insertUserUseCase.invoke(data)
-                Log.d("11", data.user_data)
                 val userData = Gson().fromJson(data.user_data, Array<CardModel>::class.java)
                 userData.forEach {
                     addCardUseCase.invoke(it) //долго прилетает, надо решать вопросики
